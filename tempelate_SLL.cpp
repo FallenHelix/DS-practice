@@ -8,12 +8,12 @@ class sll
 protected:
 	struct node
 	{
-		object data;
+		object key;
 		node* next;
-		node(object& e, node* n = nullptr) :data(e), next(n) {}
+		node(object& e, node* n = nullptr) :key(e), next(n) {}
 	};
 private:
-	node* head;
+	node * head;
 	node* tail;
 public:
 	int size;
@@ -25,7 +25,7 @@ public:
 	}
 	int insert_begin(object n)
 	{
-		node* newptr = new node(n, head);
+		node * newptr = new node(n, head);
 
 		if (head == nullptr)
 		{
