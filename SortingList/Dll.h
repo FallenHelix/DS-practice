@@ -21,6 +21,7 @@ public:
 	node* nextR(node *n, int k = 1);
 	
 	node* prevR(node*n, int k=1);
+	void ShellSort_value();
 	//void delete_end();
 	//void delete_beg();
 	//void insert_end();

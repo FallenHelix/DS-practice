@@ -75,13 +75,46 @@ void Dll::ty()
 	printR();
 }
 
+
+void Dll::ShellSort_value()
+{
+	if (size == 1 || size == 0)
+		return;
+	for (int i = size / 2; i > 0; i = i / 2)
+	{
+		auto temp = nextR(head, i);
+		std::cout << "\ni: " << i<< std::endl;
+		while (temp)
+	    {
+			int key = temp->key;
+			node*temp2 = prevR(temp, i);
+			int k = temp2->key;
+			while (temp2 != nullptr && k > key)
+			{
+				nextR(temp2,i)->key = k;
+				
+				if (!prevR(temp2,i))
+					break;
+				temp2 = prevR(temp2,i);
+				k = temp2->key;
+			}
+			if (temp2->key > key)
+				temp2->key = key;
+			else
+				nextR(temp2,i)->key = key;
+			temp = nextR(temp);
+	    }
+			std::cout << "\n\n";
+			print();
+	}
+}
+
 void Dll::InsertionSort_value()
 {
 	if (size == 1 || size == 0)
 		return;
 	auto temp = head->next;
-	int i = 1;
-	while (i < size)
+	while (temp)
 	{
 		int key = temp->key;//current key
 		node* temp2 = prevR(temp);//temp key to check every time
@@ -94,12 +127,15 @@ void Dll::InsertionSort_value()
 			temp2 = prevR(temp2);
 			k = temp2->key;
 		}
-		if (temp2->prev == nullptr)
+		//if (temp2->prev == nullptr)
+			//temp2->key = key;
+		if (temp2->key > key)
 			temp2->key = key;
 		else
 			nextR(temp2)->key = key;
-		i++;
 		temp = nextR(temp);
+		std::cout << "\n\n";
+		print();
 	}
 }
 
