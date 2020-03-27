@@ -5,6 +5,7 @@
 #include<stack>
 #include<list>
 
+#define _CRT_INT_MAX 10000
 class graph 
 {
 protected:
@@ -292,55 +293,59 @@ void graph::dij(int src)
 		}
 
 	}
-	for (int i = 0; i < this->size; i++)
-	{
-		if (path[i] != -1)
-			std::cout<<"NODE: " << i << " Shortest Distance: " << dist[i] << std::endl;
-	}
-	for (int i = 0; i < this->size; i++)
-	{
-		if (path[i] != -1)
-			std::cout << "To reach  " << i << " use  " << path[i] << std::endl;
-	}
+	// for (int i = 0; i < this->size; i++)
+	// {
+	// 	if (path[i] != -1)
+	// 		std::cout<<"NODE: " << i << " Shortest Distance: " << dist[i] << std::endl;
+	// }
+	// for (int i = 0; i < this->size; i++)
+	// {
+	// 	if (path[i] != -1)
+	// 		std::cout << "To reach  " << i << " use  " << path[i] << std::endl;
+	// }
+	for (int i = 0; i < size; i++)
+    {
+        std::cout <<"Vertex: "<<i << " parent: " << path[i] << " Distance: " << dist[i];
+        std::cout << std::endl;
+    }
 }
 
 
 int main()
 {
-	/*
-	std::cout << "Enter the Number of Vertices's: ";
-	int n;
-	std::cin >> n;
-	int src, dst, weight,ans;
-	graph g = graph(n+1);
-	while (1)
-	{
-		std::cout << "Enter the Source vertex followed by destination and the weight  ";
-		std::cin >> src >> dst >> weight;
-		if (src == -1)
-			break;
-		g.insert(src, dst, weight);
-		g.insert(dst, src, weight);
+	
+	graph g = graph(11);
 
-	}*/
+	// g.insert(0, 6, 4);
+	// g.insert(0, 2, 3);
+	// g.insert(2, 3,2);
+	// g.insert(3, 7, 2);
+	// g.insert(7, 0, 1);
+	// g.insert(0, 7, 1);
 
-	g.insert(0, 6, 4);
-	g.insert(0, 2, 3);
-	g.insert(2, 3,2);
-	g.insert(3, 7, 2);
-	g.insert(7, 0, 1);
-	g.insert(0, 7, 1);
+	// g.insert(6, 7, 10);
+	// g.insert(6, 1, 1);
+	// g.insert(6, 4, 4);
+	// g.insert(1, 5, 8);
+	// g.insert(5, 4, 2);
+	// g.insert(4, 5, 1);
+	// g.insert(4, 2, 6);
+	// g.dij(0);
 
-	g.insert(6, 7, 10);
-	g.insert(6, 1, 1);
-	g.insert(6, 4, 4);
-	g.insert(1, 5, 8);
-	g.insert(5, 4, 2);
-	g.insert(4, 5, 1);
-	g.insert(4, 2, 6);
+	 g.insert(1, 2, 2);
 
-//	std::cout << "Enter the Source Vertex for Dijkstra Algorithm: ";
-	//std::cin >> ans;
-	g.dij(0);
+    g.insert(1, 3, 5);
+    g.insert(2, 3, 4);
+    g.insert(2, 4, 3);
+    g.insert(3, 5, 7);
+    g.insert(4, 5, 6);
+    g.insert(4, 6, 2);
+    g.insert(5, 6, 5);
+    g.insert(5, 7, 8);
+    g.insert(6, 7, 9);
+    g.insert(6, 8, 10);
+    g.insert(7, 8, 5);
+    std::cout<<"Dij: \n";
+    g.dij(1);
 	std::cin.get();
 }
